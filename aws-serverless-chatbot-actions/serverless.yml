@@ -1,6 +1,6 @@
-service: forex-mlmatawaran
+service: forex
 
-frameworkVersion: "<=1.26.1"
+frameworkVersion: "<=1.6.1"
 
 custom:
   namespace: ${self:service}-${self:custom.stage}
@@ -10,14 +10,13 @@ provider:
   name: aws
   runtime: nodejs4.3
   stage: dev
-  region: ap-southeast-1
+  region: us-east-1
   environment:
-  
-    CLIENT_ID: '305570067236.324838945430'
-    CLIENT_SECRET: 324e74ba01f7364163cf1c3ff3be03fc
-    VERIFICATION_TOKEN: GAvGUB1Z2ymYlfCQ6c1p5zXk
-    INSTALL_ERROR_URL: http://forex-mlmatawaranmidterm.s3-website-ap-southeast-1.amazonaws.com/#error
-    INSTALL_SUCCESS_URL: http://forex-mlmatawaranmidterm.s3-website-ap-southeast-1.amazonaws.com/#success
+    CLIENT_ID: '141688652678.141098631428'
+    CLIENT_SECRET: 48e88bba4aef0b84a862b8d35ca4e31d
+    VERIFICATION_TOKEN: aDGP3Ghk5YLCX8srGDug6iIj
+    INSTALL_ERROR_URL: http://serverlessslackbot.s3-website-us-east-1.amazonaws.com/#error
+    INSTALL_SUCCESS_URL: http://serverlessslackbot.s3-website-us-east-1.amazonaws.com/#success
     NAMESPACE: ${self:custom.namespace}
     TEAMS_TABLE: ${self:custom.namespace}-teams
   iamRoleStatements:
@@ -34,7 +33,7 @@ provider:
         - arn:aws:lambda:*:*:function:${self:custom.namespace}-actions
 
 functions:
-  actions:
+  action:
     handler: actions.handler
   events:
     handler: events.handler
